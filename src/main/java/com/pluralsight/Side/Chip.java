@@ -1,8 +1,6 @@
-package com.pluralsight.order;
+package com.pluralsight.Side;
 
 //import com.pluralsight.Sandwich.Sandwich;
-
-import java.util.List;
 
 public class Chip {
 private String brand;
