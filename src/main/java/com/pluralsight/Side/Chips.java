@@ -2,10 +2,10 @@ package com.pluralsight.Side;
 
 //import com.pluralsight.Sandwich.Sandwich;
 
-public class Chip {
-private String brand;
+public class Chips {
+    private String brand;
 
-    public Chip(String brand) {
+    public Chips(String brand) {
         this.brand = brand;
     }
     //does this need to be a super or not?? bc its breaks Home:57
@@ -19,7 +19,7 @@ private String brand;
     }
 
 
-    public static void getPrice() {
-        System.out.println("get ChipsPrice");
+    public double getChipPrice() {
+        return 1.50;
     }
 }

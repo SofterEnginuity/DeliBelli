@@ -1,5 +1,7 @@
 package com.pluralsight.sandwich;
 
+import com.pluralsight.Side.Drink;
+
 import java.util.ArrayList;
 import java.util.List;
 //import java.util.List;
@@ -62,11 +64,14 @@ private boolean extraCheese;
         this.extraCheese = extraCheese;
     }
 
-//    public List<Topping> getToppings() {
-//        return toppings;
+    //    public addTopping(){
+//            //topping.add(topping
 //    }
-//
-//    public void setToppings(List<Topping> toppings) {
-//        this.toppings = toppings;
-//    }
+
+    public double calculatePrice(double price){
+
+        return price;
+    }
+
+
 }

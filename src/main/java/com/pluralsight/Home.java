@@ -1,13 +1,14 @@
 package com.pluralsight;
 
-import com.pluralsight.OrderManagement.OrderFileManager;
-import com.pluralsight.Side.Chip;
+import com.pluralsight.OrderManagement.Order;
+import com.pluralsight.Side.Chips;
 import com.pluralsight.Side.Drink;
 
 import java.util.Scanner;
 
 public class Home {
 
+    private Order currentOrder;
 
     public void displayUserInterface() {
 
@@ -44,31 +45,17 @@ public class Home {
                 switch (selection) {
                     case 1:
 //processGetSandwich();
-
-
                         break;
                     case 2:
-                        Chip.getPrice();
-                        System.out.println("Please select a brand of chips");
-                        System.out.println("Lays BBQ Chips");
-                        System.out.println("Ruffles Potato Chips");
-                        System.out.println("Doritos");
-                        System.out.println("Cheetos");
+                        System.out.println("Please select a brand of chips(Lays BBQ, Ruffles Potato, Doritos, Cheetos, Pretzels");
                         String userChips = scanner.nextLine();
-                        Chip chip = new Chip(userChips);
+                        Chips chip = new Chips(userChips);
                         chip.setBrand(userChips);
+                        currentOrder.addChips(chip);
                         System.out.println(userChips + " added to your order.");
                         break;
                     case 3:
-                        Drink.getPrice();
-                        System.out.println("Please type the drink you would like");
-                        System.out.println("Sprite");
-                        System.out.println("Dr Pepper");
-                        System.out.println("Pepsi");
-                        System.out.println("Root Beer");
-                        System.out.println("Apple Juice");
-                        System.out.println("Orange Juice");
-                        System.out.println("Water");
+                        System.out.println("Please type the drink you would like: (Sprite, Dr Pepper, Pepsi, Root Beer, Apple Juice, Orange Juice, Water)");
                         String userDrink;
                         while (true) {
                             System.out.println("Please select a drink:");
@@ -106,8 +93,16 @@ public class Home {
                             }
                         }
                         Drink drink = new Drink(userDrink, size);
-                        drink.setName(userDrink);
+                        currentOrder.addDrink(drink);
                         break;
+
+//                    case 4:
+
+                    case 5:
+//                        Order.checkOut();
+                        System.out.println("Checkout");
+
+
 
                     case 0:
                         System.out.println("Thank you for coming to DeliBelli");

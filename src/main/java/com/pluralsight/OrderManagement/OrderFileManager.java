@@ -1,7 +1,7 @@
 package com.pluralsight.OrderManagement;
 
 
-import com.pluralsight.Side.Chip;
+import com.pluralsight.Side.Chips;
 import com.pluralsight.Side.Drink;
 
 import java.io.BufferedWriter;
@@ -18,13 +18,13 @@ public void saveOrder(Order order){
         BufferedWriter writer = new BufferedWriter(fileWriter);
 
 
-        for (Chip chip : order.getChips()) {
-            writer.write("CHIP|" + chip.getBrand());
+        for (Chips chip : order.getChips()) {
+            writer.write("CHIP|" + chip.getBrand()); //+ getPrice()
             writer.newLine();
         }
 
         for (Drink drink : order.getDrinks()) {
-            writer.write("DRINK|" + drink.getName() + "|" + drink.getSize());
+            writer.write("DRINK|" + drink.getName() + "|" + drink.getSize()); //+ getPrice()
             writer.newLine();
         }
 
@@ -34,9 +34,6 @@ public void saveOrder(Order order){
         System.out.println("Error writing file: " + e.getMessage());
     }
 
-    
-    
-    
 
     }
 }
