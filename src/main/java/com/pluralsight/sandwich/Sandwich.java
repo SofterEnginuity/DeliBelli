@@ -16,12 +16,10 @@ private boolean extraCheese;
 
 private List<Toppings> toppings;
 
-    public Sandwich(String bread, int size, boolean toasted, boolean extraMeat, boolean extraCheese) {
+    public Sandwich(String bread, int size, boolean toasted) {
         this.bread = bread;
         this.size = size;
         this.toasted = toasted;
-        this.extraMeat = extraMeat;
-        this.extraCheese = extraCheese;
         this.toppings  = new ArrayList<>();
 
     }
@@ -65,6 +63,7 @@ private List<Toppings> toppings;
     public void setExtraCheese(boolean extraCheese) {
         this.extraCheese = extraCheese;
     }
+
     public List<Toppings> getToppings() {
 return toppings;
     }
@@ -87,8 +86,11 @@ return toppings;
     }
 //
    public double calculatePrice(double price){
-//    double price = Toppings.getPrice();
- //how do iu access the prices???
+        //base price + ezxtra meat blah blahh
+       //for loop over toppings to get the price of all toppings
+ //how do i access the prices???
+
+
      return price;
    }
 

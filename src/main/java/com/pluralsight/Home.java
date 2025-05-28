@@ -16,7 +16,7 @@ import java.util.Scanner;
 
 public class Home {
 
-    private Order currentOrder ;
+    private Order currentOrder;
 
     public void displayUserInterface() {
 
@@ -28,8 +28,8 @@ public class Home {
         System.out.println(userInput);
 
 
-
         if (userInput.equalsIgnoreCase("O")) {
+            currentOrder = new Order();
             System.out.println("New Order menu options");
 
             int selection = -1;
@@ -56,20 +56,10 @@ public class Home {
                         System.out.println("Select the size of sandwich you would like (4, 8, or 12)");
                         int sandwichSize = scanner.nextInt();
                         double sandwichPrice = 0;
-                        if (sandwichSize == 4) {
-                            sandwichPrice = 1.00;
-                        } else if (sandwichSize == 8) {
-                            sandwichPrice = 2.00;
-                        } else if (sandwichSize == 12) {
-                            sandwichPrice = 3.00;
-                        }else{
-                            System.out.println("Please make a valid selection");
-                        }
-
                         System.out.println("Please enter the type of bread you would like (White, Wheat, Rye, Wrap");
                         String bread = scanner.nextLine();
                         scanner.nextLine();
-                        if(!bread.isEmpty()){
+                        if (!bread.isEmpty()) {
                             break;
                         }
 
@@ -84,15 +74,8 @@ public class Home {
                         String userToasted = scanner.nextLine().trim().toLowerCase();
                         boolean toasted = userToasted.equals("y");
 
-                        System.out.println("Would you like extra Meat? (Y - Yes, N- No) ");
-                        String userExtraMeat = scanner.nextLine().trim().toLowerCase();
-                        boolean extraMeat = userExtraMeat.equals("y");
 
-                        System.out.println("Would you like extra Cheese? (Y - Yes, N- No) ");
-                        String userExtraCheese = scanner.nextLine().trim().toLowerCase();
-                        boolean extraCheese = userExtraCheese.equals("y");
-
-                        Sandwich sandwich = new Sandwich(bread, sandwichSize, toasted, extraMeat, extraCheese);
+                        Sandwich sandwich = new Sandwich(bread, sandwichSize, toasted);
 //gathering the toppings
 //halp
                         System.out.println("Please enter the toppings you would like, separated by commas (Lettuce, Peppers, Onions, Tomatoes, Jalapenos, Cucumbers, Pickles, Guacamole, Mushrooms");
@@ -105,30 +88,33 @@ public class Home {
 //more than one meat??
                         System.out.println("Please enter the Meat(s) you would like (Steak, Ham, Salami, Roast Beef, Chicken, Bacon)");
                         String userMeat = scanner.nextLine();
-
+                        System.out.println("Would you like extra Meat? (Y - Yes, N- No) ");
+                        String userExtraMeat = scanner.nextLine().trim().toLowerCase();
+                        boolean extraMeat = userExtraMeat.equals("y");
+                        sandwich.setExtraMeat(extraMeat);
 //more than one chz??
                         System.out.println("Please enter the Cheese that you would like (Provolone, Cheddar, Swiss, American, Gouda)");
                         String userCheese = scanner.nextLine();
-
+                        System.out.println("Would you like extra Cheese? (Y - Yes, N- No) ");
+                        String userExtraCheese = scanner.nextLine().trim().toLowerCase();
+                        boolean extraCheese = userExtraCheese.equals("y");
+                        sandwich.setExtraCheese(extraCheese);
 
                         System.out.println("Sandwich size is:  " + sandwichSize + " inches");
                         System.out.println("Selected bread is: " + bread);
                         System.out.println("Selected sauce is: " + userSauce);
                         System.out.println("Selected toppings are: " + Arrays.toString(userToppings));
                         System.out.println("Toasted:" + userToasted);
-                        System.out.println("Selected Meat: "+ userMeat);
-                        System.out.println( "Extra Meat: "+ extraMeat);
+                        System.out.println("Selected Meat: " + userMeat);
+                        System.out.println("Extra Meat: " + extraMeat);
                         System.out.println("Selected Cheese: " + userCheese);
                         System.out.println("Extra Cheese: " + extraCheese);
                         System.out.println("Toppings: " + sandwich.getToppingsList());
-                       sandwich.setSize(sandwichSize);
-                       sandwich.setBread(bread);
-                       sandwich.setToasted(toasted);
-                       sandwich.setExtraCheese(extraCheese);
-                       sandwich.setExtraMeat(extraMeat);
+
+
 //sandwich.addTopping(userToppings);
-//currentOrder.addSandwich(sandwich);
-//OrderFileManager.saveOrder
+                        currentOrder.addSandwich(sandwich);
+//OrderFileManager.saveOrder();
                         break;
 
                     case 2:
@@ -185,9 +171,8 @@ public class Home {
 
 
                     case 5:
-//                        Order.checkOut();
                         System.out.println("Checkout");
-
+                        System.out.println(currentOrder);
 
 
                     case 0:
@@ -199,9 +184,9 @@ public class Home {
 
             } while (selection != 0);
 
-        } else if(userInput.equalsIgnoreCase("X")){
+        } else if (userInput.equalsIgnoreCase("X")) {
             System.out.println("Exiting Deli..");
-        }else{
+        } else {
             System.out.println("Please make a valid selection");
         }
 //        OrderFileManager.getOrderDetails();
@@ -209,8 +194,6 @@ public class Home {
 
         System.out.println(currentOrder);
     }
-
-
 
 
 }
