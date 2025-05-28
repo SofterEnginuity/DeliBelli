@@ -1,6 +1,7 @@
 package com.pluralsight;
 
 import com.pluralsight.OrderManagement.Order;
+import com.pluralsight.OrderManagement.OrderFileManager;
 import com.pluralsight.Side.Chips;
 import com.pluralsight.Side.Drink;
 import com.pluralsight.sandwich.Sandwich;
@@ -15,7 +16,7 @@ import java.util.Scanner;
 
 public class Home {
 
-    private Order currentOrder;
+    private Order currentOrder ;
 
     public void displayUserInterface() {
 
@@ -26,18 +27,19 @@ public class Home {
         String userInput = scanner.nextLine();
         System.out.println(userInput);
 
+
+
         if (userInput.equalsIgnoreCase("O")) {
             System.out.println("New Order menu options");
 
             int selection = -1;
             do {
                 System.out.println("\nPlease make a selection: ");
-//            System.out.println("1   Build your Sandwich");
+                System.out.println("1   Build your Sandwich");
                 System.out.println("2   Chips");
                 System.out.println("3   Drink");
-                System.out.println("4   Extras");//?
-//            System.out.println("5   ");
-//            System.out.println("6  ");
+                System.out.println("4   Checkout ");
+//            System.out.println("4  ");
                 System.out.println("0   Exit");
 
                 if (scanner.hasNextInt()) {
@@ -51,7 +53,6 @@ public class Home {
 
                 switch (selection) {
                     case 1:
-
                         System.out.println("Select the size of sandwich you would like (4, 8, or 12)");
                         int sandwichSize = scanner.nextInt();
                         double sandwichPrice = 0;
@@ -61,16 +62,23 @@ public class Home {
                             sandwichPrice = 2.00;
                         } else if (sandwichSize == 12) {
                             sandwichPrice = 3.00;
+                        }else{
+                            System.out.println("Please make a valid selection");
                         }
 
                         System.out.println("Please enter the type of bread you would like (White, Wheat, Rye, Wrap");
                         String bread = scanner.nextLine();
+                        scanner.nextLine();
+                        if(!bread.isEmpty()){
+                            break;
+                        }
+
 
                         System.out.println("Please enter the sauce that you would like. (Mayo, Mustard, Ketchup, Ranch, Thousand Island, Vinaigrette, Au Jus, ");
                         String userSauce = scanner.nextLine();
                         Sauce sauce = new Sauce(userSauce);
+//should sauce be an array list??
 //I have sauce class- i make new sauce BUT i dont have toasted class - make new toppings class? add toppings??
-
 
                         System.out.println("Would you like your sandwich toasted? (Y - Yes, N- No) ");
                         String userToasted = scanner.nextLine().trim().toLowerCase();
@@ -83,7 +91,6 @@ public class Home {
                         System.out.println("Would you like extra Cheese? (Y - Yes, N- No) ");
                         String userExtraCheese = scanner.nextLine().trim().toLowerCase();
                         boolean extraCheese = userExtraCheese.equals("y");
-//creating the sandwich
 
                         Sandwich sandwich = new Sandwich(bread, sandwichSize, toasted, extraMeat, extraCheese);
 //gathering the toppings
@@ -91,20 +98,37 @@ public class Home {
                         System.out.println("Please enter the toppings you would like, separated by commas (Lettuce, Peppers, Onions, Tomatoes, Jalapenos, Cucumbers, Pickles, Guacamole, Mushrooms");
                         String[] userToppings = scanner.nextLine().split(",");
 
-//                        Sandwich.addToppings();       orrrrrrr
-//                        for (String topping : userToppings) {
-//                            sandwich.addTopping(new Regular(topping.trim()));
- //wants 6 parameters because of super//??
-//                        }
-                        System.out.println(Arrays.toString(userToppings));
+
+                        for (String topping : userToppings) {
+                            sandwich.addTopping(new Regular(topping.trim()));
+                        }
 //more than one meat??
                         System.out.println("Please enter the Meat(s) you would like (Steak, Ham, Salami, Roast Beef, Chicken, Bacon)");
                         String userMeat = scanner.nextLine();
 
-
+//more than one chz??
                         System.out.println("Please enter the Cheese that you would like (Provolone, Cheddar, Swiss, American, Gouda)");
                         String userCheese = scanner.nextLine();
 
+
+                        System.out.println("Sandwich size is:  " + sandwichSize + " inches");
+                        System.out.println("Selected bread is: " + bread);
+                        System.out.println("Selected sauce is: " + userSauce);
+                        System.out.println("Selected toppings are: " + Arrays.toString(userToppings));
+                        System.out.println("Toasted:" + userToasted);
+                        System.out.println("Selected Meat: "+ userMeat);
+                        System.out.println( "Extra Meat: "+ extraMeat);
+                        System.out.println("Selected Cheese: " + userCheese);
+                        System.out.println("Extra Cheese: " + extraCheese);
+                        System.out.println("Toppings: " + sandwich.getToppingsList());
+                       sandwich.setSize(sandwichSize);
+                       sandwich.setBread(bread);
+                       sandwich.setToasted(toasted);
+                       sandwich.setExtraCheese(extraCheese);
+                       sandwich.setExtraMeat(extraMeat);
+//sandwich.addTopping(userToppings);
+//currentOrder.addSandwich(sandwich);
+//OrderFileManager.saveOrder
                         break;
 
                     case 2:
@@ -181,6 +205,9 @@ public class Home {
             System.out.println("Please make a valid selection");
         }
 //        OrderFileManager.getOrderDetails();
+
+
+        System.out.println(currentOrder);
     }
 
 

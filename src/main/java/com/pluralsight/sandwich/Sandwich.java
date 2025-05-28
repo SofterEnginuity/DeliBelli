@@ -1,5 +1,6 @@
 package com.pluralsight.sandwich;
 
+import com.pluralsight.Side.Chips;
 import com.pluralsight.Side.Drink;
 import com.pluralsight.sandwich.toppings.Toppings;
 
@@ -65,7 +66,18 @@ private List<Toppings> toppings;
         this.extraCheese = extraCheese;
     }
     public List<Toppings> getToppings() {
-        return toppings;
+return toppings;
+    }
+//Potato Sensei helping me to print list in UI
+    public String getToppingsList() {
+        String result = "";
+        for (Toppings topping : toppings) {
+            if (!result.isEmpty()) {
+                result += ", ";
+            }
+            result += topping.getName();
+        }
+        return result;
     }
 
 
@@ -74,9 +86,21 @@ private List<Toppings> toppings;
         toppings.add(topping);
     }
 //
-//    public double calculatePrice(double price){
-//        return price;
-//    }
+   public double calculatePrice(double price){
+//    double price = Toppings.getPrice();
+ //how do iu access the prices???
+     return price;
+   }
 
-
+    @Override
+    public String toString() {
+        return "Sandwich{" +
+                "bread='" + bread + '\'' +
+                ", size=" + size +
+                ", toasted=" + toasted +
+                ", extraMeat=" + extraMeat +
+                ", extraCheese=" + extraCheese +
+                ", toppings=" + toppings +
+                '}';
+    }
 }

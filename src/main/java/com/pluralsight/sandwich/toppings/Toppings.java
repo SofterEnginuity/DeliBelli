@@ -22,4 +22,8 @@ public abstract class Toppings {
 
     public abstract double getPrice( int size);
 
+    @Override
+    public String toString() {
+        return "Toppings:" + name + '\'';
+    }
 }

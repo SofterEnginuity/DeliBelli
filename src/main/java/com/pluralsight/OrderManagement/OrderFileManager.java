@@ -20,7 +20,7 @@ public void saveOrder(Order order){
         BufferedWriter writer = new BufferedWriter(fileWriter);
 
 
-        for (Sandwich sandwich : order.getSandwiches()) {
+        for (Sandwich sandwich : order.getSandwich()) {
             writer.write("SANDWICH");  // write a header line
             writer.newLine();
 
@@ -40,6 +40,8 @@ public void saveOrder(Order order){
             writer.write("DRINK|" + drink.getName() + "|" + drink.getSize()); //+ getPrice()
             writer.newLine();
         }
+
+
 
 
 
