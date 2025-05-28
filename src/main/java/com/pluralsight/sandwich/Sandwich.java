@@ -1,10 +1,10 @@
 package com.pluralsight.sandwich;
 
 import com.pluralsight.Side.Drink;
+import com.pluralsight.sandwich.toppings.Toppings;
 
 import java.util.ArrayList;
 import java.util.List;
-//import java.util.List;
 
 public class Sandwich {
 private String bread;
@@ -13,7 +13,7 @@ private boolean toasted;
 private boolean extraMeat;
 private boolean extraCheese;
 
-//private List<Topping> toppings;
+private List<Toppings> toppings;
 
     public Sandwich(String bread, int size, boolean toasted, boolean extraMeat, boolean extraCheese) {
         this.bread = bread;
@@ -21,7 +21,8 @@ private boolean extraCheese;
         this.toasted = toasted;
         this.extraMeat = extraMeat;
         this.extraCheese = extraCheese;
-//        this.toppings = toppings; // List<Topping> toppings
+        this.toppings  = new ArrayList<>();
+
     }
 
     public String getBread() {
@@ -63,15 +64,14 @@ private boolean extraCheese;
     public void setExtraCheese(boolean extraCheese) {
         this.extraCheese = extraCheese;
     }
-
-    //    public addTopping(){
-//            //topping.add(topping
-//    }
-
-    public double calculatePrice(double price){
-
-        return price;
+//need to actually add to sandwich
+    public void addTopping(Toppings topping) {
+        toppings.add(topping);
     }
+//
+//    public double calculatePrice(double price){
+//        return price;
+//    }
 
 
 }

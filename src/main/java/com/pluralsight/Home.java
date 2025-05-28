@@ -3,7 +3,14 @@ package com.pluralsight;
 import com.pluralsight.OrderManagement.Order;
 import com.pluralsight.Side.Chips;
 import com.pluralsight.Side.Drink;
+import com.pluralsight.sandwich.Sandwich;
+import com.pluralsight.sandwich.toppings.Regular;
+import com.pluralsight.sandwich.toppings.Sauce;
+import com.pluralsight.sandwich.toppings.Toppings;
+import org.w3c.dom.ls.LSOutput;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 public class Home {
@@ -44,8 +51,56 @@ public class Home {
 
                 switch (selection) {
                     case 1:
-//processGetSandwich();
+
+                        System.out.println("Select the size of sandwich you would like (4, 8, or 12)");
+                        int sandwichSize = scanner.nextInt();
+                        double sandwichPrice = 0;
+                        if (sandwichSize == 4) {
+                            sandwichPrice = 1.00;
+                        } else if (sandwichSize == 8) {
+                            sandwichPrice = 2.00;
+                        } else if (sandwichSize == 12) {
+                            sandwichPrice = 3.00;
+                        }
+
+                        System.out.println("Please enter the type of bread you would like (White, Wheat, Rye, Wrap");
+                        String bread = scanner.nextLine();
+
+                        System.out.println("Please enter the sauce that you would like. (Mayo, Mustard, Ketchup, Ranch, Thousand Island, Vinaigrette, Au Jus, ");
+                        String userSauce = scanner.nextLine();
+                        Sauce sauce = new Sauce(userSauce);
+
+
+
+                        System.out.println("Would you like your sandwich toasted? (Y - Yes, N- No) ");
+                        String userToasted = scanner.nextLine().trim().toLowerCase();
+                        boolean toasted = userToasted.equals("y");
+
+                        System.out.println("Would you like extra Meat? (Y - Yes, N- No) ");
+                        String userExtraMeat = scanner.nextLine().trim().toLowerCase();
+                        boolean extraMeat = userExtraMeat.equals("y");
+
+                        System.out.println("Would you like extra Cheese? (Y - Yes, N- No) ");
+                        String userExtraCheese = scanner.nextLine().trim().toLowerCase();
+                        boolean extraCheese = userExtraCheese.equals("y");
+//creating the sandwich
+
+                        Sandwich sandwich = new Sandwich(bread, sandwichSize, toasted, extraMeat, extraCheese);
+//gathering the toppings
+//halp
+                        System.out.println("Please enter the toppings you would like, separated by commas (Lettuce, Peppers, Onions, Tomatoes, Jalapenos, Cucumbers, Pickles, Guacamole, Mushrooms");
+                        String[] userToppings = scanner.nextLine().split(",");
+
+//                        Sandwich.addToppings();       orrrrrrr
+//                        for (String topping : userToppings) {
+//                            sandwich.addTopping(new Regular(topping.trim()));
+ //wants 6 parameters because of super//??
+//                        }
+
+                        System.out.println(Arrays.toString(userToppings));
+
                         break;
+
                     case 2:
                         System.out.println("Please select a brand of chips(Lays BBQ, Ruffles Potato, Doritos, Cheetos, Pretzels");
                         String userChips = scanner.nextLine();
@@ -72,7 +127,7 @@ public class Home {
                                 System.out.println("Please make a valid selection.");
                             }
                         }
-                        int size = 0;
+                        int drinkSize = 0;
                         while (true) {
                             System.out.println("Please select the size you would like:");
                             System.out.println("1 - Small");
@@ -80,9 +135,9 @@ public class Home {
                             System.out.println("3 - Large");
 
                             if (scanner.hasNextInt()) {
-                                size = scanner.nextInt();
-                                scanner.nextLine(); // consume the leftover newline
-                                if (size == 1 || size == 2 || size == 3) {
+                                drinkSize = scanner.nextInt();
+                                scanner.nextLine();
+                                if (drinkSize == 1 || drinkSize == 2 || drinkSize == 3) {
                                     break;
                                 } else {
                                     System.out.println("Please select a valid size option (1, 2, or 3).");
@@ -92,11 +147,12 @@ public class Home {
                                 scanner.nextLine();
                             }
                         }
-                        Drink drink = new Drink(userDrink, size);
+                        Drink drink = new Drink(userDrink, drinkSize);
                         currentOrder.addDrink(drink);
                         break;
 
-//                    case 4:
+                    case 4:
+
 
                     case 5:
 //                        Order.checkOut();
@@ -120,6 +176,8 @@ public class Home {
         }
 //        OrderFileManager.getOrderDetails();
     }
+
+
 
 
 }
