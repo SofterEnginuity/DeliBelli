@@ -64,7 +64,12 @@ private List<Toppings> toppings;
     public void setExtraCheese(boolean extraCheese) {
         this.extraCheese = extraCheese;
     }
-//need to actually add to sandwich
+    public List<Toppings> getToppings() {
+        return toppings;
+    }
+
+
+    //need to actually add to sandwich
     public void addTopping(Toppings topping) {
         toppings.add(topping);
     }

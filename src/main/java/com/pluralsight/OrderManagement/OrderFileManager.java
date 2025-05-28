@@ -3,6 +3,8 @@ package com.pluralsight.OrderManagement;
 
 import com.pluralsight.Side.Chips;
 import com.pluralsight.Side.Drink;
+import com.pluralsight.sandwich.Sandwich;
+import com.pluralsight.sandwich.toppings.Toppings;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -18,6 +20,17 @@ public void saveOrder(Order order){
         BufferedWriter writer = new BufferedWriter(fileWriter);
 
 
+        for (Sandwich sandwich : order.getSandwiches()) {
+            writer.write("SANDWICH");  // write a header line
+            writer.newLine();
+
+            for (Toppings topping : sandwich.getToppings()) {
+                writer.write("TOPPING|" + topping.getName());  // or topping.toString()
+                writer.newLine();
+            }
+        }
+
+
         for (Chips chip : order.getChips()) {
             writer.write("CHIP|" + chip.getBrand()); //+ getPrice()
             writer.newLine();
@@ -27,6 +40,7 @@ public void saveOrder(Order order){
             writer.write("DRINK|" + drink.getName() + "|" + drink.getSize()); //+ getPrice()
             writer.newLine();
         }
+
 
 
         writer.close();

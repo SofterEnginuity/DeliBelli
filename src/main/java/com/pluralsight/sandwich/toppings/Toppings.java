@@ -2,10 +2,10 @@ package com.pluralsight.sandwich.toppings;
 
 import com.pluralsight.sandwich.Sandwich;
 
-public abstract class Toppings extends Sandwich {
+public abstract class Toppings {
     private String name;
 
-    public Toppings(String bread, int size, boolean toasted, boolean extraMeat, boolean extraCheese, String name) {
+    public Toppings(String name) {
         this.name = name;
     }
 

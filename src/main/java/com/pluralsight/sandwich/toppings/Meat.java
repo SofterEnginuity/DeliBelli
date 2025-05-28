@@ -1,8 +1,8 @@
 package com.pluralsight.sandwich.toppings;
 
 public class Meat extends Toppings{
-    public Meat(String bread, int size, boolean toasted, boolean extraMeat, boolean extraCheese, String name) {
-        super(bread, size, toasted, extraMeat, extraCheese, name);
+    public Meat(String name) {
+        super(name);
     }
 
     @Override

@@ -69,7 +69,7 @@ public class Home {
                         System.out.println("Please enter the sauce that you would like. (Mayo, Mustard, Ketchup, Ranch, Thousand Island, Vinaigrette, Au Jus, ");
                         String userSauce = scanner.nextLine();
                         Sauce sauce = new Sauce(userSauce);
-
+//I have sauce class- i make new sauce BUT i dont have toasted class - make new toppings class? add toppings??
 
 
                         System.out.println("Would you like your sandwich toasted? (Y - Yes, N- No) ");
@@ -96,8 +96,14 @@ public class Home {
 //                            sandwich.addTopping(new Regular(topping.trim()));
  //wants 6 parameters because of super//??
 //                        }
-
                         System.out.println(Arrays.toString(userToppings));
+//more than one meat??
+                        System.out.println("Please enter the Meat(s) you would like (Steak, Ham, Salami, Roast Beef, Chicken, Bacon)");
+                        String userMeat = scanner.nextLine();
+
+
+                        System.out.println("Please enter the Cheese that you would like (Provolone, Cheddar, Swiss, American, Gouda)");
+                        String userCheese = scanner.nextLine();
 
                         break;
 

@@ -2,29 +2,30 @@ package com.pluralsight.OrderManagement;
 
 import com.pluralsight.Side.Chips;
 import com.pluralsight.Side.Drink;
+import com.pluralsight.sandwich.Sandwich;
 
 import java.util.List;
 
 public class Order {
 
-    //    private List<Sandwich> sandwiches;
+    private List<Sandwich> sandwiches;
     private List<Drink> drinks;
     private List<Chips> chips;
     //
-    public Order(List<Drink> drinks, List<Chips> chips) {
-//            List<Sandwich> sandwiches,
-//            this.sandwiches = sandwiches;
+    public Order(List<Sandwich> sandwiches,List<Drink> drinks, List<Chips> chips) {
+
+        this.sandwiches = sandwiches;
         this.drinks = drinks;
         this.chips = chips;
     }
 
-    //    public List<Sandwich> getSandwiches() {
-    //        return sandwiches;
-    //    }
-    //
-    //    public void setSandwiches(List<Sandwich> sandwiches) {
-    //        this.sandwiches = sandwiches;
-    //    }
+    public List<Sandwich> getSandwiches() {
+
+            return sandwiches; // a list of sandwiches
+    }
+    public void setSandwiches(List<Sandwich> sandwiches) {
+            this.sandwiches = sandwiches;
+    }
 
     public List<Drink> getDrinks() {
         return drinks;

@@ -2,8 +2,8 @@ package com.pluralsight.sandwich.toppings;
 
 public class Cheese extends Toppings{
 
-    public Cheese(String bread, int size, boolean toasted, boolean extraMeat, boolean extraCheese, String name) {
-        super(bread, size, toasted, extraMeat, extraCheese, name);
+    public Cheese(String name) {
+        super(name);
     }
 
     @Override
