@@ -6,9 +6,10 @@ import com.pluralsight.sandwich.Sandwich;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Order {
-
+    Scanner scanner = new Scanner(System.in);
     private List<Sandwich> sandwiches;
     private List<Drink> drinks;
     private List<Chips> chips;
@@ -87,8 +88,58 @@ public class Order {
 
     }
 
-//    checkOut( );
-//    printReceipt();
+
+
+    public void checkOut(){
+        getOrderDetails();
+        System.out.println("To confirm your Order is correct and checkout, enter a C");
+        String readyToCheckout = scanner.nextLine();
+        if(!readyToCheckout.equalsIgnoreCase("C")){
+            System.out.println("Please make a valid selection");
+        }else{
+            System.out.println("Please enter the denomination you would like to use to pay.");
+            System.out.println("1 - $5.00\n 2 - $10.00\n 3 - $20.00 \n 4 - $50.00\n 5 - $100.00\n 6 - Exact Change");
+            int userDenom = scanner.nextInt();
+            double userPayment = 0.0;
+
+            if (userDenom == 1) {
+                userPayment = 5.00;
+            } else if (userDenom == 2) {
+                userPayment = 10.00;
+            } else if (userDenom == 3) {
+                userPayment = 20.00;
+            } else if (userDenom == 4) {
+                userPayment = 50.00;
+            } else if (userDenom == 5) {
+                userPayment = 100.00;
+            } else if (userDenom == 6) {
+                userPayment = totalPrice();
+            }
+            double change = userPayment - totalPrice();
+
+            if (change < 0) {
+                System.out.println("Not enough payment!");
+            } else {
+                System.out.println("Thank you for your payment!");
+                System.out.println("Your change is: $" + change);
+
+
+//                OrderFileManager.saveOrder(currentOrder);
+
+
+            }
+            return;
+        }
+    }
+
+
+
+//print all sandwich information and prices
+//format into a new document
+
+
+
+
 
 
     @Override

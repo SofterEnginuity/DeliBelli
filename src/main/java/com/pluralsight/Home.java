@@ -1,6 +1,7 @@
 package com.pluralsight;
 
 import com.pluralsight.OrderManagement.Order;
+import com.pluralsight.OrderManagement.OrderFileManager;
 import com.pluralsight.Side.Chips;
 import com.pluralsight.Side.Drink;
 import com.pluralsight.sandwich.Sandwich;
@@ -177,7 +178,8 @@ public class Home {
                         break;
 
                     case 4:
-                        currentOrder.getOrderDetails();
+                        currentOrder.checkOut();
+                        OrderFileManager.saveOrder(currentOrder);
 
                     case 5:
 
