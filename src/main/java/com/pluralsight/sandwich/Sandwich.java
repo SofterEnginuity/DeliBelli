@@ -15,6 +15,8 @@ private boolean extraCheese;
 
 private List<Toppings> toppings;
 
+
+
     public Sandwich(String bread, int size, boolean toasted) {
         this.bread = bread;
         this.size = size;
@@ -23,9 +25,8 @@ private List<Toppings> toppings;
 
     }
 
-    public int getSize() {
-        return size;
-    }
+
+
     public List<Toppings> getToppings() {
         return toppings;
     }
@@ -39,10 +40,18 @@ private List<Toppings> toppings;
         }
         return result;
     }
+//    public List<String> getToppingsList() {
+//        List<String> result = new ArrayList<>();
+//        for (Toppings topping : toppings) {
+//            result.add(topping.getName());
+//        }
+//        return result;
+//    }
+
     public void addTopping(Toppings topping) {
         toppings.add(topping);
     }
-    public double fullSandwichPrice(double sandwichPrice) {
+    public double fullSandwichPrice() {
         double basePrice = 0;
         if (size == 4) {
             basePrice = 5.00;
@@ -68,7 +77,7 @@ private List<Toppings> toppings;
             else if (size == 8) toppingPrice += 1.50;
             else if (size == 12) toppingPrice += 2.25;
         }
-        sandwichPrice = basePrice + toppingPrice;
+       double sandwichPrice = basePrice + toppingPrice;
         return sandwichPrice;
    }
 
@@ -83,7 +92,7 @@ private List<Toppings> toppings;
         result += "Extra Meat: " + (extraMeat ? "Yes" : "No") + "\n";
 //        result += "Cheese: " + getCheeseList() + "\n";
         result += "Extra Cheese: " + (extraCheese ? "Yes" : "No") + "\n";
-        result += String.format("Price: $%.2f", fullSandwichPrice(size));
+        result += String.format("Price: $%.2f", fullSandwichPrice());
         return result;
     }
 }

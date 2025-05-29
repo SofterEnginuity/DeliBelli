@@ -3,8 +3,8 @@ package com.pluralsight.sandwich.toppings;
 import java.util.Arrays;
 
 public class Meat extends Toppings{
-    public Meat(String[] name) {
-        super(Arrays.toString(name));
+    public Meat(String name) {
+        super(name);
     }
 
     @Override

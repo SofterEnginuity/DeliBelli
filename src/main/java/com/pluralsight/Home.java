@@ -53,65 +53,97 @@ public class Home {
                     case 1:
                         System.out.println("Select the size of sandwich you would like (4, 8, or 12)");
                         int size = scanner.nextInt();
-//                        System.out.println(Sandwich.getSandwichPrice(size));
-
-                        System.out.println("Please enter the type of bread you would like (White, Wheat, Rye, Wrap");
-                        String bread = scanner.nextLine();
                         scanner.nextLine();
-                        if (!bread.isEmpty()) {
-                            break;
-                        }
-
+                        System.out.println();
+                        System.out.println("Please enter the type of bread you would like (White, Wheat, Rye, Wrap");
+                        String userBread = scanner.nextLine();
+                        if (!userBread.isEmpty()) {
+                            System.out.println("Please enter a bread type.");
+                        }System.out.println();
                         System.out.println("Would you like your sandwich toasted? (Y - Yes, N- No) ");
+
                         String userToasted = scanner.nextLine().trim().toLowerCase();
                         boolean toasted = userToasted.equals("y");
+                        Sandwich sandwich = new Sandwich(userBread, size, toasted);
+                        sandwich.addTopping(new Regular(userBread));
 
-                        Sandwich sandwich = new Sandwich(bread, size, toasted);
-                        System.out.println("Please enter the toppings you would like (Lettuce, Peppers, Onions, Tomatoes, Jalapenos, Cucumbers, Pickles, Guacamole, Mushrooms");
-                        String[] userToppings = scanner.nextLine().split(" ");
-                        for (String topping : userToppings) {
-                            sandwich.addTopping(new Regular(topping.trim()));
+
+                        System.out.println();
+                        System.out.println("Enter your toppings one at a time (type 'x' when finished)");
+                        System.out.println("Lettuce, Peppers, Onions, Tomatoes, Jalapenos, Cucumbers, Pickles, Guacamole, Mushrooms");
+                        while (true) {
+                            String toppingsInput = scanner.nextLine().trim();
+                            if (toppingsInput.equalsIgnoreCase("x")) {
+                                break;
+                            }
+                            if (!toppingsInput.isEmpty()) {
+                                sandwich.addTopping(new Regular(toppingsInput));
+                            }
                         }
-                        System.out.println("Please enter the Meat(s) you would like (Steak, Ham, Salami, Roast Beef, Chicken, Bacon)");
-                        String [] userMeats = scanner.nextLine().split(" ");
+
+                        System.out.println();
+                        System.out.println("Enter your meats one at a time (type 'x' when finished):");
+                        String meatInput;
+                        System.out.println("Steak, Ham, Salami, Roast Beef, Chicken, Bacon");
+                        while (true) {
+
+                            meatInput = scanner.nextLine().trim();
+                            if (meatInput.equalsIgnoreCase("x")) {
+                                break;
+                            }
+                            if (!meatInput.isEmpty()) {
+                                sandwich.addTopping(new Meat(meatInput));
+                            }
+                        }
+
+                        System.out.println();
                         System.out.println("Would you like extra Meat? (Y - Yes, N- No) ");
                         String userExtraMeat = scanner.nextLine().trim().toLowerCase();
                         boolean extraMeat = userExtraMeat.equals("y");
-                        sandwich.addTopping(new Meat(userMeats));
                         sandwich.addTopping(new Regular(userExtraMeat));
 
-                        System.out.println("Please enter the Cheese that you would like (Provolone, Cheddar, Swiss, American, Gouda)");
-                        String [] userCheese = scanner.nextLine().split(" ");
+                        System.out.println();
+                        System.out.println("Enter your cheeses one at a time (type 'x' when finished):");
+                        System.out.println("Provolone, Cheddar, Swiss, American, Gouda");
+                        while (true) {
 
+                            String cheeseInput = scanner.nextLine().trim();
+                            if (cheeseInput.equalsIgnoreCase("x")) {
+                                break;
+                            }
+                            if (!cheeseInput.isEmpty()) {
+                                sandwich.addTopping(new Cheese(cheeseInput));
+                            }
+                        }
+
+                        System.out.println();
                         System.out.println("Would you like extra Cheese? (Y - Yes, N- No) ");
                         String userExtraCheese = scanner.nextLine().trim().toLowerCase();
                         boolean extraCheese = userExtraCheese.equals("y");
-                        sandwich.addTopping(new Cheese(userCheese));
                         sandwich.addTopping(new Regular(userExtraCheese));
 
-                        System.out.println("Please enter the sauces that you would like. (Mayo, Mustard, Ketchup, Ranch, Thousand Island, Vinaigrette, Au Jus, ");
-                        String[] userSauce = scanner.nextLine().split(" ");
-                            sandwich.addTopping(new Sauce(userSauce));
-
+                        System.out.println();
+                        System.out.println("Enter your sauces one at a time (type 'x' when finished)");
+                        System.out.println("Mayo, Mustard, Ketchup, Ranch, Thousand Island, Vinaigrette, Au Jus");
+                        while (true) {
+                            String sauceInput = scanner.nextLine().trim();
+                            if (sauceInput.equalsIgnoreCase("x")) {
+                                break;
+                            }
+                            if (!sauceInput.isEmpty()) {
+                                sandwich.addTopping(new Regular(sauceInput));
+                            }
+                        }
+                        System.out.println();
                         System.out.println("Sandwich size is:  " + size + " inches");
-                        System.out.println("Selected bread is: " + bread);
-
-                        System.out.println("Toasted:" + userToasted);
-                        System.out.println("Selected Meats: " + Arrays.toString(userMeats));
-
+                        System.out.println("Bread Type: " + userBread);
+                        System.out.println("Toasted: " + (toasted ? "Yes" : "No"));
                         System.out.println("Extra Meat: " + extraMeat);
-                        System.out.println("Selected Cheeses: " + Arrays.toString(userCheese));
-
                         System.out.println("Extra Cheese: " + extraCheese);
-                        System.out.println("Selected sauce is: " + Arrays.toString(userSauce));
                         System.out.println("Toppings: " + sandwich.getToppingsList());
 
                         currentOrder.addSandwich(sandwich);
-                        System.out.println(sandwich.fullSandwichPrice(size));
-
-
-
-
+                        System.out.println(sandwich.fullSandwichPrice());
 
                         break;
 
@@ -174,6 +206,7 @@ public class Home {
 
                     case 5:
                         currentOrder.cancelOrder();
+
                         System.out.println("Exiting Deli..");
 
                     case 0:

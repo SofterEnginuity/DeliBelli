@@ -4,8 +4,8 @@ import java.util.Arrays;
 
 public class Cheese extends Toppings{
 
-    public Cheese(String[] name) {
-        super(Arrays.toString(name));
+    public Cheese(String name) {
+        super(name);
     }
 
     @Override

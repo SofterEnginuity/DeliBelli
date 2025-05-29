@@ -45,7 +45,7 @@ public static void saveOrder(Order order){
             writer.newLine();
 
             for (Toppings topping : sandwich.getToppings()) {
-                writer.write("TOPPINGS|" + topping.getName());  // or topping.toString()
+                writer.write("TOPPINGS|" + topping.getName());
                 writer.newLine();
             }
         }

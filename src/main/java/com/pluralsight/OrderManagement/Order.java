@@ -1,5 +1,6 @@
 package com.pluralsight.OrderManagement;
 
+import com.pluralsight.Home;
 import com.pluralsight.Side.Chips;
 import com.pluralsight.Side.Drink;
 import com.pluralsight.sandwich.Sandwich;
@@ -13,7 +14,6 @@ public class Order {
     private List<Sandwich> sandwiches;
     private List<Drink> drinks;
     private List<Chips> chips;
-
 
     public Order() {
         this.sandwiches = new ArrayList<>();
@@ -44,7 +44,7 @@ public class Order {
         double basePrice = 0;
 
         for (Sandwich sandwich : sandwiches) {
-            basePrice += sandwich.fullSandwichPrice(sandwich.getSize());
+            basePrice += sandwich.fullSandwichPrice();
         }
         for (Drink drink : drinks) {
             basePrice += drink.getDrinkPrice();
@@ -56,12 +56,17 @@ public class Order {
 
     }
     public void cancelOrder(){
-        System.exit(0);
+            sandwiches.clear();
+            drinks.clear();
+            chips.clear();
+
+        Home home = new Home();
+        home.displayUserInterface();
     }
     public void getOrderDetails(){
         for (Sandwich sandwich : sandwiches) {
             System.out.println(sandwich);
-            System.out.println(sandwich.fullSandwichPrice(sandwich.getSize()));
+            System.out.println(sandwich.fullSandwichPrice());
         }
         for (Drink drink : drinks) {
             System.out.println( drink.getSize()+ " , " + drink.getName());
@@ -107,10 +112,6 @@ public class Order {
             } else {
                 System.out.println("Thank you for your payment!");
                 System.out.println("Your change is: $" + change);
-
-
-//                OrderFileManager.saveOrder(currentOrder);
-
 
             }
             return;
