@@ -1,8 +1,14 @@
 package com.pluralsight.sandwich.toppings;
 
-public class Sauce {
-    public Sauce(Sauce sauce) {
+import java.util.Arrays;
 
+public class Sauce extends Toppings {
+    public Sauce(String[] name) {
+        super(Arrays.toString(name));
     }
 
+    @Override
+    public double getPrice(int size) {
+        return 0;
+    }
 }

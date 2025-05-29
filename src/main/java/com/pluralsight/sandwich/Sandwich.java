@@ -1,6 +1,7 @@
 package com.pluralsight.sandwich;
 
-import com.pluralsight.sandwich.toppings.*;
+import com.pluralsight.sandwich.toppings.Meat;
+import com.pluralsight.sandwich.toppings.Toppings;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -76,46 +77,10 @@ return toppings;
         }
         return result;
     }
-    public String getMeatList() {
-        String result = "";
-        for (Toppings topping : toppings) {
-            if (topping instanceof Meat) {
-                if (!result.isEmpty()) {
-                    result += ", ";
-                }
-                result += topping.getName();
-            }
-        }
-        return result;
-    }
-    public String getCheeseList() {
-        String result = "";
-        for (Toppings topping : toppings) {
-            if (topping instanceof Cheese) {
-                if (!result.isEmpty()) {
-                    result += ", ";
-                }
-                result += topping.getName();
-            }
-        }
-        return result;
-    }
-
-//    public String getSauceList() {
-//        String result = "";
-//        for (Toppings topping : toppings) {
-//            if (topping instanceof Sauce) {
-//                if (!result.isEmpty()) {
-//                    result += ", ";
-//                }
-//                result += topping.getName();
-//            }
-//        }
-//        return result;
-//    }
 
 
-    public void addTopping(Regular topping) {
+
+    public void addTopping(Toppings topping) {
         toppings.add(topping);
     }
 
@@ -156,9 +121,9 @@ return toppings;
         result += "Size: " + size + "\n";
         result += "Toasted: " + (toasted ? "Yes" : "No") + "\n";
         result += "Toppings: " + getToppingsList() + "\n";
-        result += "Meats: " + getMeatList() + "\n";
+//        result += "Meats: " + getMeatList() + "\n";
         result += "Extra Meat: " + (extraMeat ? "Yes" : "No") + "\n";
-        result += "Cheese: " + getCheeseList() + "\n";
+//        result += "Cheese: " + getCheeseList() + "\n";
         result += "Extra Cheese: " + (extraCheese ? "Yes" : "No") + "\n";
         result += String.format("Price: $%.2f", fullSandwichPrice(size));
         return result;

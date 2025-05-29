@@ -21,10 +21,10 @@ public class Order {
     }
 
     public List<Sandwich> getSandwich() {
-            return sandwiches;
+        return sandwiches;
     }
     public void setSandwiches(List<Sandwich> sandwiches) {
-            this.sandwiches = sandwiches;
+        this.sandwiches = sandwiches;
     }
 
     public List<Drink> getDrinks() {
@@ -67,7 +67,7 @@ public class Order {
         }
         return basePrice;
 
- }
+    }
 
     public void getOrderDetails(){
         for (Sandwich sandwich : sandwiches) {
@@ -75,16 +75,19 @@ public class Order {
             System.out.println(sandwich.fullSandwichPrice(sandwich.getSize()));
         }
         for (Drink drink : drinks) {
-            System.out.println(  drink.getName() + " - " + drink.getDrinkPrice());
+            System.out.println( drink.getSize()+ " , " + drink.getName());
+            System.out.println(drink.getDrinkPrice());
         }
         for (Chips chip : chips) {
-            System.out.println(chip.getBrand() + " - " + chip.getChipPrice());
+            System.out.println(chip.getBrand());
+            System.out.println(chip.getChipPrice());
         }
 
         System.out.println("Total:" + totalPrice());
 
     }
 
+//    checkOut( );
 //    printReceipt();
 
 

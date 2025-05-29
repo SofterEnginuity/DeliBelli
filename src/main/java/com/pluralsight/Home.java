@@ -76,43 +76,39 @@ public class Home {
                         }
 //more than one meat??
                         System.out.println("Please enter the Meat(s) you would like (Steak, Ham, Salami, Roast Beef, Chicken, Bacon)");
-                        String[] userMeats = scanner.nextLine().split(" ");
-                        for (String meatName : userMeats) {
-                            sandwich.addTopping(new Meat(meatName.trim()));
-                        }
-
-
+                        String [] userMeats = scanner.nextLine().split(" ");
                         System.out.println("Would you like extra Meat? (Y - Yes, N- No) ");
                         String userExtraMeat = scanner.nextLine().trim().toLowerCase();
                         boolean extraMeat = userExtraMeat.equals("y");
-
+                        sandwich.addTopping(new Meat(userMeats));
                         sandwich.addTopping(new Regular(userExtraMeat));
 
 //more than one chz??
                         System.out.println("Please enter the Cheese that you would like (Provolone, Cheddar, Swiss, American, Gouda)");
                         String [] userCheese = scanner.nextLine().split(" ");
-                        sandwich.addTopping(new Cheese(userCheese));
 
                         System.out.println("Would you like extra Cheese? (Y - Yes, N- No) ");
                         String userExtraCheese = scanner.nextLine().trim().toLowerCase();
                         boolean extraCheese = userExtraCheese.equals("y");
-
+                        sandwich.addTopping(new Cheese(userCheese));
                         sandwich.addTopping(new Regular(userExtraCheese));
 
                         System.out.println("Please enter the sauces that you would like. (Mayo, Mustard, Ketchup, Ranch, Thousand Island, Vinaigrette, Au Jus, ");
-                        String userSauce = scanner.nextLine();
-                        sandwich.addTopping(new Sauce(userSauce));
-//
+                        String[] userSauce = scanner.nextLine().split(" ");
+                            sandwich.addTopping(new Sauce(userSauce));
 
                         System.out.println("Sandwich size is:  " + size + " inches");
                         System.out.println("Selected bread is: " + bread);
 //                        System.out.println("Selected toppings are: " + Arrays.toString(userToppings));
                         System.out.println("Toasted:" + userToasted);
-                        System.out.println("Selected Meat: " + sandwich.getMeatList());
+                        System.out.println("Selected Meats: " + Arrays.toString(userMeats));
+//                        System.out.println("Selected Meat: " + sandwich.getMeatList());
                         System.out.println("Extra Meat: " + extraMeat);
-                        System.out.println("Selected Cheese: " + sandwich.getCheeseList());
+                        System.out.println("Selected Cheeses: " + Arrays.toString(userCheese));
+//                        System.out.println("Selected Cheese: " + sandwich.getCheeseList());
                         System.out.println("Extra Cheese: " + extraCheese);
-                        System.out.println("Selected sauce is: " + userSauce);
+                        System.out.println("Selected sauce is: " + Arrays.toString(userSauce));
+
                         System.out.println("Toppings: " + sandwich.getToppingsList());
 
 
