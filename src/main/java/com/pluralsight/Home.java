@@ -100,7 +100,7 @@ public class Home {
                         System.out.println("Would you like extra Meat? (Y - Yes, N- No) ");
                         String userExtraMeat = scanner.nextLine().trim().toLowerCase();
                         boolean extraMeat = userExtraMeat.equals("y");
-                        sandwich.addTopping(new Regular(userExtraMeat));
+                        sandwich.setExtraMeat(extraMeat);
 
                         System.out.println();
                         System.out.println("Enter your cheeses one at a time (type 'x' when finished):");
@@ -120,7 +120,7 @@ public class Home {
                         System.out.println("Would you like extra Cheese? (Y - Yes, N- No) ");
                         String userExtraCheese = scanner.nextLine().trim().toLowerCase();
                         boolean extraCheese = userExtraCheese.equals("y");
-                        sandwich.addTopping(new Regular(userExtraCheese));
+                        sandwich.setExtraCheese(extraCheese);
 
                         System.out.println();
                         System.out.println("Enter your sauces one at a time (type 'x' when finished)");
@@ -143,7 +143,7 @@ public class Home {
                         System.out.println("Toppings: " + sandwich.getToppingsList());
 
                         currentOrder.addSandwich(sandwich);
-                        System.out.println(sandwich.fullSandwichPrice());
+                        System.out.println("$ " + sandwich.fullSandwichPrice());
 
                         break;
 

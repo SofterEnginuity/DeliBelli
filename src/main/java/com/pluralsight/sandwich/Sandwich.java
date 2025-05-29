@@ -10,7 +10,16 @@ public class Sandwich {
 private String bread;
 private int size;
 private boolean toasted;
-private boolean extraMeat;
+
+    public void setExtraMeat(boolean extraMeat) {
+        this.extraMeat = extraMeat;
+    }
+
+    public void setExtraCheese(boolean extraCheese) {
+        this.extraCheese = extraCheese;
+    }
+
+    private boolean extraMeat;
 private boolean extraCheese;
 
 private List<Toppings> toppings;

@@ -41,14 +41,19 @@ public static void saveOrder(Order order){
         writer.newLine();
 
         for (Sandwich sandwich : order.getSandwich()) {
-            writer.write("SANDWICHES");
+            writer.write("SANDWICH");
             writer.newLine();
 
+            writer.write("TOPPINGS|");
+            boolean first = true;
             for (Toppings topping : sandwich.getToppings()) {
-                writer.write("TOPPINGS|" + topping.getName());
-                writer.newLine();
+                if (!first) writer.write(", ");
+                writer.write(topping.getName());
+                first = false;
             }
+            writer.newLine();
         }
+
 
         for (Chips chip : order.getChips()) {
             writer.write("CHIPS|" + chip.getBrand());
@@ -60,7 +65,8 @@ public static void saveOrder(Order order){
             writer.newLine();
         }
 
-        writer.write("TOTAL|" + order.totalPrice());
+
+        writer.write("TOTAL      $" + order.totalPrice());
         writer.newLine();
 
         writer.close();

@@ -1,0 +1,15 @@
+RECEIPT
+DeliBelli's
+(515-555-5555)
+123 Main st, Philadelphia PA 12345
+----------------------------------------
+SANDWICHES
+TOPPINGS|white
+TOPPINGS|lettuce
+TOPPINGS|pepper
+TOPPINGS|steal
+TOPPINGS|n
+TOPPINGS|cheddr
+TOPPINGS|n
+TOPPINGS|mayo
+TOTAL|10.5
