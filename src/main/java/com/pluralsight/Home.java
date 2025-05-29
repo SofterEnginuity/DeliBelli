@@ -1,17 +1,15 @@
 package com.pluralsight;
 
 import com.pluralsight.OrderManagement.Order;
-import com.pluralsight.OrderManagement.OrderFileManager;
 import com.pluralsight.Side.Chips;
 import com.pluralsight.Side.Drink;
 import com.pluralsight.sandwich.Sandwich;
+import com.pluralsight.sandwich.toppings.Cheese;
+import com.pluralsight.sandwich.toppings.Meat;
 import com.pluralsight.sandwich.toppings.Regular;
 import com.pluralsight.sandwich.toppings.Sauce;
-import com.pluralsight.sandwich.toppings.Toppings;
-import org.w3c.dom.ls.LSOutput;
 
 import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
 
 public class Home {
@@ -28,7 +26,7 @@ public class Home {
         System.out.println(userInput);
 
 
-        if (userInput.equalsIgnoreCase("O")) {
+        if (userInput.equalsIgnoreCase("O") || userInput.equalsIgnoreCase("0") ) {
             currentOrder = new Order();
             System.out.println("New Order menu options");
 
@@ -54,8 +52,9 @@ public class Home {
                 switch (selection) {
                     case 1:
                         System.out.println("Select the size of sandwich you would like (4, 8, or 12)");
-                        int sandwichSize = scanner.nextInt();
-                        double sandwichPrice = 0;
+                        int size = scanner.nextInt();
+//                        System.out.println(Sandwich.getSandwichPrice(size));
+
                         System.out.println("Please enter the type of bread you would like (White, Wheat, Rye, Wrap");
                         String bread = scanner.nextLine();
                         scanner.nextLine();
@@ -64,56 +63,67 @@ public class Home {
                         }
 
 
-                        System.out.println("Please enter the sauce that you would like. (Mayo, Mustard, Ketchup, Ranch, Thousand Island, Vinaigrette, Au Jus, ");
-                        String userSauce = scanner.nextLine();
-                        Sauce sauce = new Sauce(userSauce);
-//should sauce be an array list??
-//I have sauce class- i make new sauce BUT i dont have toasted class - make new toppings class? add toppings??
 
                         System.out.println("Would you like your sandwich toasted? (Y - Yes, N- No) ");
                         String userToasted = scanner.nextLine().trim().toLowerCase();
                         boolean toasted = userToasted.equals("y");
 
-
-                        Sandwich sandwich = new Sandwich(bread, sandwichSize, toasted);
-//gathering the toppings
-//halp
-                        System.out.println("Please enter the toppings you would like, separated by commas (Lettuce, Peppers, Onions, Tomatoes, Jalapenos, Cucumbers, Pickles, Guacamole, Mushrooms");
-                        String[] userToppings = scanner.nextLine().split(",");
-
-
+                        Sandwich sandwich = new Sandwich(bread, size, toasted);
+                        System.out.println("Please enter the toppings you would like (Lettuce, Peppers, Onions, Tomatoes, Jalapenos, Cucumbers, Pickles, Guacamole, Mushrooms");
+                        String[] userToppings = scanner.nextLine().split(" ");
                         for (String topping : userToppings) {
                             sandwich.addTopping(new Regular(topping.trim()));
                         }
 //more than one meat??
                         System.out.println("Please enter the Meat(s) you would like (Steak, Ham, Salami, Roast Beef, Chicken, Bacon)");
-                        String userMeat = scanner.nextLine();
+                        String[] userMeats = scanner.nextLine().split(" ");
+                        for (String meatName : userMeats) {
+                            sandwich.addTopping(new Meat(meatName.trim()));
+                        }
+
+
                         System.out.println("Would you like extra Meat? (Y - Yes, N- No) ");
                         String userExtraMeat = scanner.nextLine().trim().toLowerCase();
                         boolean extraMeat = userExtraMeat.equals("y");
-                        sandwich.setExtraMeat(extraMeat);
+
+                        sandwich.addTopping(new Regular(userExtraMeat));
+
 //more than one chz??
                         System.out.println("Please enter the Cheese that you would like (Provolone, Cheddar, Swiss, American, Gouda)");
-                        String userCheese = scanner.nextLine();
+                        String [] userCheese = scanner.nextLine().split(" ");
+                        sandwich.addTopping(new Cheese(userCheese));
+
                         System.out.println("Would you like extra Cheese? (Y - Yes, N- No) ");
                         String userExtraCheese = scanner.nextLine().trim().toLowerCase();
                         boolean extraCheese = userExtraCheese.equals("y");
-                        sandwich.setExtraCheese(extraCheese);
 
-                        System.out.println("Sandwich size is:  " + sandwichSize + " inches");
+                        sandwich.addTopping(new Regular(userExtraCheese));
+
+                        System.out.println("Please enter the sauces that you would like. (Mayo, Mustard, Ketchup, Ranch, Thousand Island, Vinaigrette, Au Jus, ");
+                        String userSauce = scanner.nextLine();
+                        sandwich.addTopping(new Sauce(userSauce));
+//
+
+                        System.out.println("Sandwich size is:  " + size + " inches");
                         System.out.println("Selected bread is: " + bread);
-                        System.out.println("Selected sauce is: " + userSauce);
-                        System.out.println("Selected toppings are: " + Arrays.toString(userToppings));
+//                        System.out.println("Selected toppings are: " + Arrays.toString(userToppings));
                         System.out.println("Toasted:" + userToasted);
-                        System.out.println("Selected Meat: " + userMeat);
+                        System.out.println("Selected Meat: " + sandwich.getMeatList());
                         System.out.println("Extra Meat: " + extraMeat);
-                        System.out.println("Selected Cheese: " + userCheese);
+                        System.out.println("Selected Cheese: " + sandwich.getCheeseList());
                         System.out.println("Extra Cheese: " + extraCheese);
+                        System.out.println("Selected sauce is: " + userSauce);
                         System.out.println("Toppings: " + sandwich.getToppingsList());
 
 
-//sandwich.addTopping(userToppings);
+//                        System.out.println(currentOrder);
+
                         currentOrder.addSandwich(sandwich);
+                        System.out.println(sandwich.fullSandwichPrice(size));
+//                        System.out.println(currentOrder.totalPrice());
+
+
+
 //OrderFileManager.saveOrder();
                         break;
 
@@ -124,6 +134,7 @@ public class Home {
                         chip.setBrand(userChips);
                         currentOrder.addChips(chip);
                         System.out.println(userChips + " added to your order.");
+                        System.out.println(currentOrder.getChips());
                         break;
                     case 3:
                         System.out.println("Please type the drink you would like: (Sprite, Dr Pepper, Pepsi, Root Beer, Apple Juice, Orange Juice, Water)");
@@ -165,18 +176,20 @@ public class Home {
                         }
                         Drink drink = new Drink(userDrink, drinkSize);
                         currentOrder.addDrink(drink);
+                        System.out.println(userDrink + " added to your order.");
+                        System.out.println(currentOrder.getDrinks());
                         break;
 
                     case 4:
-
+                        currentOrder.getOrderDetails();
 
                     case 5:
-                        System.out.println("Checkout");
-                        System.out.println(currentOrder);
+
+
 
 
                     case 0:
-                        System.out.println("Thank you for coming to DeliBelli");
+
                         break;
                     default:
                         System.out.println("Invalid selection.");
@@ -192,7 +205,7 @@ public class Home {
 //        OrderFileManager.getOrderDetails();
 
 
-        System.out.println(currentOrder);
+//        System.out.println(currentOrder);/
     }
 
 

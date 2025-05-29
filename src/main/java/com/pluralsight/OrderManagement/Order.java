@@ -54,26 +54,46 @@ public class Order {
     }
 
     public double totalPrice(){
-//return  getDrinkPrice() + getChipsPrice();
-        //do a for loop for those
-//get price of chips and drink to start and test
-        double sandwichPrice
-        if (sandwichSize == 4) {
-            sandwichPrice = 1.00;
-        } else if (sandwichSize == 8) {
-            sandwichPrice = 2.00;
-        } else if (sandwichSize == 12) {
-            sandwichPrice = 3.00;
-        }
+        double basePrice = 0;
 
-        return 0;
+        for (Sandwich sandwich : sandwiches) {
+            basePrice += sandwich.fullSandwichPrice(sandwich.getSize());
+        }
+        for (Drink drink : drinks) {
+            basePrice += drink.getDrinkPrice();
+        }
+        for (Chips chip : chips) {
+            basePrice += chip.getChipPrice();
+        }
+        return basePrice;
+
  }
 
     public void getOrderDetails(){
-        System.out.println(drinks);
-        System.out.println(chips);
+        for (Sandwich sandwich : sandwiches) {
+            System.out.println(sandwich);
+            System.out.println(sandwich.fullSandwichPrice(sandwich.getSize()));
+        }
+        for (Drink drink : drinks) {
+            System.out.println(  drink.getName() + " - " + drink.getDrinkPrice());
+        }
+        for (Chips chip : chips) {
+            System.out.println(chip.getBrand() + " - " + chip.getChipPrice());
+        }
+
+        System.out.println("Total:" + totalPrice());
+
     }
 
-//    checkOut();
 //    printReceipt();
+
+
+    @Override
+    public String toString() {
+        return "Order:\n" +
+                "Sandwiches:" + sandwiches +
+                ", Drinks:" + drinks +
+                ", Chips:" + chips +
+                '}';
+    }
 }

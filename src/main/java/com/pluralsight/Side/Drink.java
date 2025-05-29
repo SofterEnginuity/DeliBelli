@@ -27,15 +27,19 @@ public class Drink{
 
 
     public double getDrinkPrice() {
-        if(size == 1){
-           return 2.00;
+       double drinkPrice = 0;
+       if(size == 1){
+           drinkPrice = 2.00;
         } else if (size==2) {
-            return 2.50;
+           drinkPrice = 2.50;
         }else if(size == 3 ){
-            return 3.00;
-        }else{
-            System.out.println("Please make a valid selection.");
+           drinkPrice = 3.00;
         }
-        return 0;
+       return drinkPrice;
+    }
+    @Override
+    public String toString() {
+        return  name +
+                " - " + getDrinkPrice();
     }
 }

@@ -1,8 +1,6 @@
 package com.pluralsight.sandwich;
 
-import com.pluralsight.Side.Chips;
-import com.pluralsight.Side.Drink;
-import com.pluralsight.sandwich.toppings.Toppings;
+import com.pluralsight.sandwich.toppings.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -78,31 +76,91 @@ return toppings;
         }
         return result;
     }
+    public String getMeatList() {
+        String result = "";
+        for (Toppings topping : toppings) {
+            if (topping instanceof Meat) {
+                if (!result.isEmpty()) {
+                    result += ", ";
+                }
+                result += topping.getName();
+            }
+        }
+        return result;
+    }
+    public String getCheeseList() {
+        String result = "";
+        for (Toppings topping : toppings) {
+            if (topping instanceof Cheese) {
+                if (!result.isEmpty()) {
+                    result += ", ";
+                }
+                result += topping.getName();
+            }
+        }
+        return result;
+    }
+
+//    public String getSauceList() {
+//        String result = "";
+//        for (Toppings topping : toppings) {
+//            if (topping instanceof Sauce) {
+//                if (!result.isEmpty()) {
+//                    result += ", ";
+//                }
+//                result += topping.getName();
+//            }
+//        }
+//        return result;
+//    }
 
 
-    //need to actually add to sandwich
-    public void addTopping(Toppings topping) {
+    public void addTopping(Regular topping) {
         toppings.add(topping);
     }
-//
-   public double calculatePrice(double price){
-        //base price + ezxtra meat blah blahh
-       //for loop over toppings to get the price of all toppings
- //how do i access the prices???
 
+    public double fullSandwichPrice(double sandwichPrice) {
+        double basePrice = 0;
+        if (size == 4) {
+            basePrice = 5.00;
+        } else if (size == 8) {
+            basePrice = 7.00;
+        } else if (size == 12) {
+            basePrice = 8.50;
+        }
 
-     return price;
+        double toppingPrice = 0;
+        for (Toppings topping : toppings) {
+            toppingPrice += topping.getPrice(size);
+        }
+
+        if (extraMeat) {
+            if (size == 4) toppingPrice += 1.00;
+            else if (size == 8) toppingPrice += 2.00;
+            else if (size == 12) toppingPrice += 3.00;
+        }
+
+        if (extraCheese) {
+            if (size == 4) toppingPrice += 0.75;
+            else if (size == 8) toppingPrice += 1.50;
+            else if (size == 12) toppingPrice += 2.25;
+        }
+        sandwichPrice = basePrice + toppingPrice;
+        return sandwichPrice;
    }
 
     @Override
     public String toString() {
-        return "Sandwich{" +
-                "bread='" + bread + '\'' +
-                ", size=" + size +
-                ", toasted=" + toasted +
-                ", extraMeat=" + extraMeat +
-                ", extraCheese=" + extraCheese +
-                ", toppings=" + toppings +
-                '}';
+        String result = "";
+        result += "Bread: " + bread + "\n";
+        result += "Size: " + size + "\n";
+        result += "Toasted: " + (toasted ? "Yes" : "No") + "\n";
+        result += "Toppings: " + getToppingsList() + "\n";
+        result += "Meats: " + getMeatList() + "\n";
+        result += "Extra Meat: " + (extraMeat ? "Yes" : "No") + "\n";
+        result += "Cheese: " + getCheeseList() + "\n";
+        result += "Extra Cheese: " + (extraCheese ? "Yes" : "No") + "\n";
+        result += String.format("Price: $%.2f", fullSandwichPrice(size));
+        return result;
     }
 }

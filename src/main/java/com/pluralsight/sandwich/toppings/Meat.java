@@ -1,5 +1,7 @@
 package com.pluralsight.sandwich.toppings;
 
+import java.util.Arrays;
+
 public class Meat extends Toppings{
     public Meat(String name) {
         super(name);
@@ -7,9 +9,10 @@ public class Meat extends Toppings{
 
     @Override
     public double getPrice(int size) {
-        double meatPrice = 0;
+        double price = 0;
+        double  meatPrice = price;
         if (size == 4) {
-            meatPrice = 1.00;
+           meatPrice = 1.00;
         } else if (size == 8) {
             meatPrice = 2.00;
         } else if (size == 12) {

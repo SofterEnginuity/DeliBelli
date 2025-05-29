@@ -22,4 +22,9 @@ public class Chips {
     public double getChipPrice() {
         return 1.50;
     }
+    @Override
+    public String toString() {
+        return brand +
+                " - " + getChipPrice();
+    }
 }

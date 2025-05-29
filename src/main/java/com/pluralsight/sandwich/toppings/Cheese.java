@@ -1,9 +1,11 @@
 package com.pluralsight.sandwich.toppings;
 
+import java.util.Arrays;
+
 public class Cheese extends Toppings{
 
-    public Cheese(String name) {
-        super(name);
+    public Cheese(String[] name) {
+        super(Arrays.toString(name));
     }
 
     @Override
