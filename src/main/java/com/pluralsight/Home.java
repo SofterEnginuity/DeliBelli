@@ -18,14 +18,12 @@ public class Home {
     private Order currentOrder;
 
     public void displayUserInterface() {
-
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("O - Create a new order");
         System.out.println("X - Exit Deli");
         String userInput = scanner.nextLine();
         System.out.println(userInput);
-
 
         if (userInput.equalsIgnoreCase("O") || userInput.equalsIgnoreCase("0") ) {
             currentOrder = new Order();
@@ -38,6 +36,7 @@ public class Home {
                 System.out.println("2   Chips");
                 System.out.println("3   Drink");
                 System.out.println("4   Checkout ");
+
 //            System.out.println("4  ");
                 System.out.println("0   Exit");
 
@@ -63,8 +62,6 @@ public class Home {
                             break;
                         }
 
-
-
                         System.out.println("Would you like your sandwich toasted? (Y - Yes, N- No) ");
                         String userToasted = scanner.nextLine().trim().toLowerCase();
                         boolean toasted = userToasted.equals("y");
@@ -75,7 +72,6 @@ public class Home {
                         for (String topping : userToppings) {
                             sandwich.addTopping(new Regular(topping.trim()));
                         }
-//more than one meat??
                         System.out.println("Please enter the Meat(s) you would like (Steak, Ham, Salami, Roast Beef, Chicken, Bacon)");
                         String [] userMeats = scanner.nextLine().split(" ");
                         System.out.println("Would you like extra Meat? (Y - Yes, N- No) ");
@@ -84,7 +80,6 @@ public class Home {
                         sandwich.addTopping(new Meat(userMeats));
                         sandwich.addTopping(new Regular(userExtraMeat));
 
-//more than one chz??
                         System.out.println("Please enter the Cheese that you would like (Provolone, Cheddar, Swiss, American, Gouda)");
                         String [] userCheese = scanner.nextLine().split(" ");
 
@@ -100,28 +95,24 @@ public class Home {
 
                         System.out.println("Sandwich size is:  " + size + " inches");
                         System.out.println("Selected bread is: " + bread);
-//                        System.out.println("Selected toppings are: " + Arrays.toString(userToppings));
+
                         System.out.println("Toasted:" + userToasted);
                         System.out.println("Selected Meats: " + Arrays.toString(userMeats));
-//                        System.out.println("Selected Meat: " + sandwich.getMeatList());
+
                         System.out.println("Extra Meat: " + extraMeat);
                         System.out.println("Selected Cheeses: " + Arrays.toString(userCheese));
-//                        System.out.println("Selected Cheese: " + sandwich.getCheeseList());
+
                         System.out.println("Extra Cheese: " + extraCheese);
                         System.out.println("Selected sauce is: " + Arrays.toString(userSauce));
-
                         System.out.println("Toppings: " + sandwich.getToppingsList());
-
-
-//                        System.out.println(currentOrder);
 
                         currentOrder.addSandwich(sandwich);
                         System.out.println(sandwich.fullSandwichPrice(size));
-//                        System.out.println(currentOrder.totalPrice());
 
 
 
-//OrderFileManager.saveOrder();
+
+
                         break;
 
                     case 2:
@@ -182,9 +173,8 @@ public class Home {
                         OrderFileManager.saveOrder(currentOrder);
 
                     case 5:
-
-
-
+                        currentOrder.cancelOrder();
+                        System.out.println("Exiting Deli..");
 
                     case 0:
 
@@ -195,15 +185,10 @@ public class Home {
 
             } while (selection != 0);
 
-        } else if (userInput.equalsIgnoreCase("X")) {
-            System.out.println("Exiting Deli..");
         } else {
             System.out.println("Please make a valid selection");
         }
-//        OrderFileManager.getOrderDetails();
 
-
-//        System.out.println(currentOrder);/
     }
 
 

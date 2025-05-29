@@ -23,50 +23,12 @@ private List<Toppings> toppings;
 
     }
 
-    public String getBread() {
-        return bread;
-    }
-
-    public void setBread(String bread) {
-        this.bread = bread;
-    }
-
     public int getSize() {
         return size;
     }
-
-    public void setSize(int size) {
-        this.size = size;
-    }
-
-    public boolean isToasted() {
-        return toasted;
-    }
-
-    public void setToasted(boolean toasted) {
-        this.toasted = toasted;
-    }
-
-    public boolean isExtraMeat() {
-        return extraMeat;
-    }
-
-    public void setExtraMeat(boolean extraMeat) {
-        this.extraMeat = extraMeat;
-    }
-
-    public boolean isExtraCheese() {
-        return extraCheese;
-    }
-
-    public void setExtraCheese(boolean extraCheese) {
-        this.extraCheese = extraCheese;
-    }
-
     public List<Toppings> getToppings() {
-return toppings;
+        return toppings;
     }
-//Potato Sensei helping me to print list in UI
     public String getToppingsList() {
         String result = "";
         for (Toppings topping : toppings) {
@@ -77,13 +39,9 @@ return toppings;
         }
         return result;
     }
-
-
-
     public void addTopping(Toppings topping) {
         toppings.add(topping);
     }
-
     public double fullSandwichPrice(double sandwichPrice) {
         double basePrice = 0;
         if (size == 4) {

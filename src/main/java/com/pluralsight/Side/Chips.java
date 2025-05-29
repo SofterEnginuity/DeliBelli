@@ -1,6 +1,5 @@
 package com.pluralsight.Side;
 
-//import com.pluralsight.Sandwich.Sandwich;
 
 public class Chips {
     private String brand;
@@ -8,7 +7,6 @@ public class Chips {
     public Chips(String brand) {
         this.brand = brand;
     }
-    //does this need to be a super or not?? bc its breaks Home:57
 
     public String getBrand() {
         return brand;

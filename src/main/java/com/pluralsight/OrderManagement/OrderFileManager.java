@@ -72,9 +72,6 @@ public static void saveOrder(Order order){
 
 
 
-//    private List<Receipt> items = new Receipt(paymentAmount, totalPrice, change);;
-//    private String payment type Cash / Credit Card???
-
 
 
 

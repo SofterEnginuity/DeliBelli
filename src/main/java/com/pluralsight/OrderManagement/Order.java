@@ -24,24 +24,11 @@ public class Order {
     public List<Sandwich> getSandwich() {
         return sandwiches;
     }
-    public void setSandwiches(List<Sandwich> sandwiches) {
-        this.sandwiches = sandwiches;
-    }
-
     public List<Drink> getDrinks() {
         return drinks;
     }
-
-    public void setDrinks(List<Drink> drinks) {
-        this.drinks = drinks;
-    }
-
     public List<Chips> getChips() {
         return chips;
-    }
-
-    public void setChips(List<Chips> chips) {
-        this.chips = chips;
     }
 
     public void addSandwich(Sandwich sandwich){
@@ -53,7 +40,6 @@ public class Order {
     public void addChips(Chips chip){
         chips.add(chip);
     }
-
     public double totalPrice(){
         double basePrice = 0;
 
@@ -69,7 +55,9 @@ public class Order {
         return basePrice;
 
     }
-
+    public void cancelOrder(){
+        System.exit(0);
+    }
     public void getOrderDetails(){
         for (Sandwich sandwich : sandwiches) {
             System.out.println(sandwich);
@@ -87,9 +75,6 @@ public class Order {
         System.out.println("Total:" + totalPrice());
 
     }
-
-
-
     public void checkOut(){
         getOrderDetails();
         System.out.println("To confirm your Order is correct and checkout, enter a C");
@@ -131,15 +116,6 @@ public class Order {
             return;
         }
     }
-
-
-
-//print all sandwich information and prices
-//format into a new document
-
-
-
-
 
 
     @Override
