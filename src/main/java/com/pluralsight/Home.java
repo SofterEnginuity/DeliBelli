@@ -247,7 +247,8 @@ public class Home {
                             sML = "Large";
                         }
                         System.out.println(sML + " " + userDrink + " added to your order.   $" + drink.getDrinkPrice());
-                    case 4:
+                        break;
+                        case 4:
                         System.out.println("\nCart");
                         currentOrder.getOrderDetails();
                         break;
