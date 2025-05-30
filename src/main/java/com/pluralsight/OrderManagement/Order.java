@@ -68,11 +68,11 @@ public class Order {
         for (Drink drink : drinks) {
             String sML;
             if (drink.getSize() == 1) {
-                sML = "(Small)";
+                sML = "Small";
             } else if (drink.getSize() == 2) {
-                sML = "(Medium)";
+                sML = "Medium";
             } else {
-                sML = "(Large)";
+                sML = "Large";
             }
             System.out.println(drink.getName() + " (" + sML + ")" + " -  $" + drink.getDrinkPrice());
         }
@@ -85,14 +85,12 @@ public class Order {
 
 public void checkOut() {
         getOrderDetails();
-        System.out.println();
         System.out.println("To confirm your Order is correct and checkout, enter a 'C'");
         System.out.println("If the order is correct, but would like to add more items enter an 'M'");
         System.out.println("To Cancel your order and return to the main menu, enter an 'X'");
 
     while (true) {
         String readyToCheckout = scanner.nextLine();
-
         if (readyToCheckout.equalsIgnoreCase("X")) {
             sandwiches.clear();
             drinks.clear();
@@ -100,8 +98,6 @@ public void checkOut() {
             System.out.println("Order cancelled. Returning to home screen...\n");
             Home home = new Home(Order.this);
             home.displayUserInterface();
-
-
             break;
 
         } else if (readyToCheckout.equalsIgnoreCase("C")) {
@@ -148,7 +144,7 @@ public void checkOut() {
 
         } else if (readyToCheckout.equalsIgnoreCase("M")) {
             System.out.println("Returning to main menu... Your order has been saved.\n");
-            Home home = new Home(this); // 'this' is the current Order object
+            Home home = new Home(this);
             home.displayUserInterface();
 
             break;

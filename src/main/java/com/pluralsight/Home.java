@@ -27,7 +27,7 @@ public class Home {
                 System.out.println("1   Build your Sandwich");
                 System.out.println("2   Chips");
                 System.out.println("3   Drink");
-                System.out.println("4   View Order");
+                System.out.println("4   View Cart");
                 System.out.println("5   Checkout ");
                 System.out.println("0   Exit");
 
@@ -248,6 +248,7 @@ public class Home {
                         }
                         System.out.println(sML + " " + userDrink + " added to your order.   $" + drink.getDrinkPrice());
                         break;
+
                         case 4:
                         System.out.println("\nCart");
                         currentOrder.getOrderDetails();
