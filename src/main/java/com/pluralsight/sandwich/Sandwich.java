@@ -1,6 +1,5 @@
 package com.pluralsight.sandwich;
 
-import com.pluralsight.sandwich.toppings.Meat;
 import com.pluralsight.sandwich.toppings.Toppings;
 
 import java.util.ArrayList;
@@ -60,7 +59,7 @@ private List<Toppings> toppings;
     public void addTopping(Toppings topping) {
         toppings.add(topping);
     }
-    public double fullSandwichPrice() {
+    public double getFullSandwichPrice() {
         double basePrice = 0;
         if (size == 4) {
             basePrice = 5.00;
@@ -76,15 +75,15 @@ private List<Toppings> toppings;
         }
 
         if (extraMeat) {
-            if (size == 4) toppingPrice += 1.00;
-            else if (size == 8) toppingPrice += 2.00;
-            else if (size == 12) toppingPrice += 3.00;
+            if (size == 4) toppingPrice += .50;
+            else if (size == 8) toppingPrice += 1.00;
+            else if (size == 12) toppingPrice += 2.225;
         }
 
         if (extraCheese) {
-            if (size == 4) toppingPrice += 0.75;
-            else if (size == 8) toppingPrice += 1.50;
-            else if (size == 12) toppingPrice += 2.25;
+            if (size == 4) toppingPrice += 0.30;
+            else if (size == 8) toppingPrice += .60;
+            else if (size == 12) toppingPrice += .90;
         }
        double sandwichPrice = basePrice + toppingPrice;
         return sandwichPrice;
@@ -101,7 +100,7 @@ private List<Toppings> toppings;
         result += "Extra Meat: " + (extraMeat ? "Yes" : "No") + "\n";
 //        result += "Cheese: " + getCheeseList() + "\n";
         result += "Extra Cheese: " + (extraCheese ? "Yes" : "No") + "\n";
-        result += String.format("Price: $%.2f", fullSandwichPrice());
+        result += String.format("Price: $%.2f", getFullSandwichPrice());
         return result;
     }
 }

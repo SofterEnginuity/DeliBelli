@@ -1,0 +1,10 @@
+RECEIPT
+DeliBelli's
+(515-555-5555)
+123 Main st, Philadelphia PA 12345
+----------------------------------------
+SANDWICH
+TOPPINGS|white, lettuce, tomato, pickles, steak, bacon, cheddar, gouda, ketchup, mayo
+CHIPS|BBQ
+DRINKS|Sprite|2
+TOTAL      $13.25

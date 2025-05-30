@@ -1,0 +1,9 @@
+RECEIPT
+DeliBelli's
+(515-555-5555)
+123 Main st, Philadelphia PA 12345
+----------------------------------------
+SANDWICH
+TOPPINGS|white, lettuce, peppers, steak, ham, cheddar, mayo mustard
+CHIPS|bbq
+TOTAL      $9.55

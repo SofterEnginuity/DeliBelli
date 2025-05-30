@@ -5,6 +5,7 @@ import com.pluralsight.Side.Chips;
 import com.pluralsight.Side.Drink;
 import com.pluralsight.sandwich.Sandwich;
 import com.pluralsight.sandwich.toppings.Toppings;
+import org.w3c.dom.ls.LSOutput;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -16,7 +17,7 @@ import java.time.format.DateTimeFormatter;
 
 public class OrderFileManager {
 
-public static void saveOrder(Order order){
+public void saveOrder(Order order){
     String timeStamp = LocalDateTime.now()
             .format(DateTimeFormatter.ofPattern("yyyyMMdd-hhmmss"));
     String fileName = "receipts/" + timeStamp + ".txt";
@@ -27,7 +28,6 @@ public static void saveOrder(Order order){
         }
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(fileName));
-
         writer.write("RECEIPT");
         writer.newLine();
         writer.write("DeliBelli's");
@@ -39,12 +39,11 @@ public static void saveOrder(Order order){
         writer.write("----------------------------------------");
 
         writer.newLine();
-
         for (Sandwich sandwich : order.getSandwich()) {
             writer.write("SANDWICH");
             writer.newLine();
 
-            writer.write("TOPPINGS|");
+            writer.write("Toppings:");
             boolean first = true;
             for (Toppings topping : sandwich.getToppings()) {
                 if (!first) writer.write(", ");
@@ -54,17 +53,22 @@ public static void saveOrder(Order order){
             writer.newLine();
         }
 
-
         for (Chips chip : order.getChips()) {
-            writer.write("CHIPS|" + chip.getBrand());
+            writer.write("CHIPS" + "|" + chip.getBrand());
             writer.newLine();
         }
-
         for (Drink drink : order.getDrinks()) {
-            writer.write("DRINKS|" + drink.getName() + "|" + drink.getSize());
+            String sML;
+            if(drink.getSize() == 1){
+                sML = "(Small)";
+            }else if (drink.getSize() == 2){
+                sML = "(Medium)";
+            }else{
+                sML = "(Large)";
+            }
+            writer.write("DRINKS " + "|" + sML  + drink.getName());
             writer.newLine();
         }
-
 
         writer.write("TOTAL      $" + order.totalPrice());
         writer.newLine();

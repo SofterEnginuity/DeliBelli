@@ -9,8 +9,7 @@ public class Meat extends Toppings{
 
     @Override
     public double getPrice(int size) {
-        double price = 0;
-        double  meatPrice = price;
+        double  meatPrice = 0;
         if (size == 4) {
            meatPrice = 1.00;
         } else if (size == 8) {
